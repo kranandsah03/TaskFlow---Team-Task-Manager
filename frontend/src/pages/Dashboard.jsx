@@ -65,11 +65,11 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
 
         {/* Page header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-white">
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-white">
             Good {new Date().getHours() < 12 ? 'morning' : new Date().getHours() < 18 ? 'afternoon' : 'evening'},{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
               {user?.name?.split(' ')[0]}
@@ -80,7 +80,7 @@ const Dashboard = () => {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8 sm:mb-10">
           <StatCard label="Total Tasks" value={stats.total} icon="📋" color="text-white" bg="bg-indigo-500/10" />
           <StatCard label="Completed" value={stats.completed} icon="✅" color="text-emerald-400" bg="bg-emerald-500/10" />
           <StatCard label="Pending" value={stats.pending} icon="⏳" color="text-amber-400" bg="bg-amber-500/10" />
@@ -89,17 +89,17 @@ const Dashboard = () => {
 
         {/* Tasks Section */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-          <h2 className="text-xl font-semibold text-white">
+          <h2 className="text-lg sm:text-xl font-semibold text-white">
             {user?.role === 'admin' ? 'All Tasks' : 'My Tasks'}
           </h2>
 
           {/* Filter tabs */}
-          <div className="flex items-center gap-1 bg-gray-900 border border-gray-800 rounded-xl p-1">
+          <div className="flex flex-wrap items-center gap-1 bg-gray-900 border border-gray-800 rounded-xl p-1 w-full sm:w-auto">
             {['all', 'Pending', 'In Progress', 'Completed', 'overdue'].map((f) => (
               <button
                 key={f}
                 onClick={() => setFilter(f)}
-                className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all duration-200 capitalize ${
+                className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all duration-200 capitalize flex-1 sm:flex-none text-center ${
                   filter === f
                     ? 'bg-indigo-600 text-white shadow'
                     : 'text-gray-500 hover:text-gray-300 hover:bg-gray-800'

@@ -125,7 +125,7 @@ const ProjectPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
 
         {/* Breadcrumb */}
         <button
@@ -142,19 +142,19 @@ const ProjectPage = () => {
         <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 mb-8">
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-lg">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center text-white font-bold text-xl sm:text-2xl shadow-lg">
                 {project.name?.charAt(0).toUpperCase()}
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-white">{project.name}</h1>
+                <h1 className="text-xl sm:text-2xl font-bold text-white leading-tight">{project.name}</h1>
                 <p className="text-gray-500 text-sm mt-0.5">Created by {project.createdBy?.name}</p>
               </div>
             </div>
             {user?.role === 'admin' && (
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-2 mt-4 sm:mt-0 w-full sm:w-auto">
                 <button
                   onClick={() => { setShowMemberForm(!showMemberForm); setShowTaskForm(false); }}
-                  className="flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 text-gray-300 text-sm rounded-lg transition-all"
+                  className="flex flex-1 sm:flex-none items-center justify-center sm:justify-start gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 text-gray-300 text-sm rounded-lg transition-all"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
@@ -163,7 +163,7 @@ const ProjectPage = () => {
                 </button>
                 <button
                   onClick={() => { setShowTaskForm(!showTaskForm); setShowMemberForm(false); }}
-                  className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm rounded-lg transition-all shadow-lg shadow-indigo-500/20"
+                  className="flex flex-1 sm:flex-none items-center justify-center sm:justify-start gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm rounded-lg transition-all shadow-lg shadow-indigo-500/20"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -206,7 +206,7 @@ const ProjectPage = () => {
             {memberError && (
               <p className="text-red-400 text-sm bg-red-500/10 border border-red-500/20 px-3 py-2 rounded-lg mb-3">{memberError}</p>
             )}
-            <form onSubmit={handleAddMember} className="flex gap-3">
+            <form onSubmit={handleAddMember} className="flex flex-col sm:flex-row gap-3">
               <select
                 value={selectedUser}
                 onChange={(e) => setSelectedUser(e.target.value)}
@@ -302,7 +302,7 @@ const ProjectPage = () => {
                   </select>
                 </div>
               </div>
-              <div className="flex gap-3 pt-1">
+              <div className="flex flex-col sm:flex-row gap-3 pt-1">
                 <button
                   type="submit"
                   disabled={taskLoading}
